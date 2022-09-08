@@ -15,9 +15,10 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.red[600],
       ),
       body: Center(
-        child: Image(
-          image: NetworkImage('https://images.unsplash.com/photo-1662638867890-499431d1c325?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'),
-        ),
+        // child: Image(
+        //   image: AssetImage('assets/stew.jpeg'),
+        // ),
+        child: Image.asset('assets/stew.jpeg'),
       ),
       floatingActionButton: FloatingActionButton(
         child: Text('click'),
