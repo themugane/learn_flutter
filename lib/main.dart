@@ -1,56 +1,109 @@
 import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(
-  home: Home()
+  home: NinjaCard(),
 ));
 
+class NinjaCard extends StatefulWidget {
+  @override
+  State<NinjaCard> createState() => _NinjaCardState();
+}
 
-class Home extends StatelessWidget {
+class _NinjaCardState extends State<NinjaCard> {
+
+  int ninjaLevel = 0;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[900],
       appBar: AppBar(
-        title: Text('my first app'),
+        title: Text('Ninja ID Card'),
         centerTitle: true,
-        backgroundColor: Colors.red[600],
-      ),
-      body: Row(
-        children: <Widget>[
-          Expanded(
-            child: Image.asset('assets/stew.jpeg'),
-            flex: 3,
-          ),
-           Expanded(
-             flex: 3,
-             child: Container(
-               padding: EdgeInsets.all(30.0),
-               color: Colors.cyan,
-               child: Text('1')
-             ),
-           ),
-            Expanded(
-              flex: 2,
-              child: Container(
-                  padding: EdgeInsets.all(30.0),
-                  color: Colors.pinkAccent,
-                  child: Text('2')
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                  padding: EdgeInsets.all(30.0),
-                  color: Colors.amber,
-                  child: Text('3')
-              ),
-            ),
-        ],
+        backgroundColor: Colors.grey[850],
+        elevation: 0.0,
       ),
       floatingActionButton: FloatingActionButton(
-        child: Text('click'),
-        onPressed: () {},
-        backgroundColor: Colors.red[600],
+        onPressed: () {
+          setState(() {
+            ninjaLevel += 1;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey[800],
       ),
+      body: Padding(
+        padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Center(
+              child: CircleAvatar(
+                backgroundImage: AssetImage('assets/stew.jpeg'),
+                radius: 40.0,
+              ),
+            ),
+            Divider(
+              height: 90.0,
+              color: Colors.grey[800],
+            ),
+            const Text(
+              'NAME',
+              style: TextStyle(
+                color: Colors.grey,
+                letterSpacing: 2.0,
+              ),
+            ),
+            SizedBox(height: 10.0),
+            Text(
+              'Mugane',
+              style: TextStyle(
+                color: Colors.amberAccent[200],
+                letterSpacing: 2.0,
+                fontSize: 28.0,
+                fontWeight: FontWeight.bold
+              ),
+            ),
+            const SizedBox(height: 30.0),
+            const Text(
+              'CURRENT NINJA LEVEL',
+              style: TextStyle(
+                color: Colors.grey,
+                letterSpacing: 2.0,
+              ),
+            ),
+            SizedBox(height: 10.0),
+            Text(
+              '$ninjaLevel',
+              style: TextStyle(
+                  color: Colors.amberAccent[200],
+                  letterSpacing: 2.0,
+                  fontSize: 28.0,
+                  fontWeight: FontWeight.bold
+              ),
+            ),
+            const SizedBox(height: 30.0),
+            Row(
+              children: <Widget>[
+                Icon(
+                  Icons.email,
+                  color: Colors.grey[400],
+                ),
+                SizedBox(width: 10.0),
+                Text(
+                  'themugane@gmail.com',
+                  style: TextStyle(
+                    color: Colors.grey[400],
+                    fontSize: 18.0,
+                    letterSpacing: 1.0,
+                  ),
+                )
+              ],
+            ),
+          ],
+        ),
+      )
     );
   }
 }
