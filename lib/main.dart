@@ -11,6 +11,7 @@ class NinjaCard extends StatefulWidget {
 
 class _NinjaCardState extends State<NinjaCard> {
 
+  int ninjaLevel = 0;
 
 
   @override
@@ -22,6 +23,15 @@ class _NinjaCardState extends State<NinjaCard> {
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            ninjaLevel += 1;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey[800],
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
@@ -47,7 +57,7 @@ class _NinjaCardState extends State<NinjaCard> {
             ),
             SizedBox(height: 10.0),
             Text(
-              ' Mugane',
+              'Mugane',
               style: TextStyle(
                 color: Colors.amberAccent[200],
                 letterSpacing: 2.0,
@@ -65,7 +75,7 @@ class _NinjaCardState extends State<NinjaCard> {
             ),
             SizedBox(height: 10.0),
             Text(
-              ' 8',
+              '$ninjaLevel',
               style: TextStyle(
                   color: Colors.amberAccent[200],
                   letterSpacing: 2.0,
